@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (4.7.2)
+  - HandyJSON (4.1.1)
+  - MJRefresh (3.1.15.3)
+  - Realm (3.7.1):
+    - Realm/Headers (= 3.7.1)
+  - Realm/Headers (3.7.1)
+  - RealmSwift (3.7.1):
+    - Realm (= 3.7.1)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - YYCache (1.0.4)
+  - YYText (1.0.7)
+
+DEPENDENCIES:
+  - Alamofire
+  - HandyJSON
+  - MJRefresh
+  - RealmSwift
+  - SDWebImage
+  - YYCache
+  - YYText
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - HandyJSON
+    - MJRefresh
+    - Realm
+    - RealmSwift
+    - SDWebImage
+    - YYCache
+    - YYText
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
+  RealmSwift: 1c2b6bae3dc55bb87e080ffa96537d71442f6dce
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+
+PODFILE CHECKSUM: c9726b0776539a19721107a5d537bd562fab0686
+
+COCOAPODS: 1.5.0
