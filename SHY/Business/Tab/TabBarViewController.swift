@@ -18,7 +18,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [timelineViewController,addressBookViewController,meViewController];
+        self.viewControllers = [UINavigationController.init(rootViewController: timelineViewController),UINavigationController.init(rootViewController: addressBookViewController),UINavigationController.init(rootViewController: meViewController)];
         // Do any additional setup after loading the view.
         self.tabBar.isHidden = true
         self.addBottomView()

@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
     var customNavigationView : UIView! = UIView.init(frame: CGRect(x: 0, y: 20 + kXtop(), width: kScreenWidth, height: 44))
     var titleLabel : UILabel! = nil
     var kTitle = ""
+    var hiddenBackBtn = false
     override var title: String? {
         set {
             kTitle = (newValue)!
@@ -38,6 +39,14 @@ class BaseViewController: UIViewController {
         self.view.addSubview(self.customNavigationView)
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+        
+        if !self.hiddenBackBtn {
+            let backBtn = UIButton.init(frame: CGRect.width(44))
+            backBtn.setImage(UIImage.init(named: "hy_back"), for: UIControlState.normal)
+            backBtn.adjustImageRect(CGRect(x: 9, y: 13.5, width: 17, height: 17))
+            backBtn.addTarget(self, action: #selector(backClick), for: UIControlEvents.touchUpInside)
+            self.customNavigationView.addSubview(backBtn)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +54,9 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func backClick(){
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

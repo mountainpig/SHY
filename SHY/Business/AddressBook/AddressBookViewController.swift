@@ -12,6 +12,7 @@ class AddressBookViewController: BaseTableViewController{
     var listArray = PYSort.sortWithArray(["莹","小","网","王","社","可","开","huangjing","黄敬","洪流一滴泪","demon","不胖只是肉多","Annybaby","狐小仙"])
 
     override func viewDidLoad() {
+        self.hiddenBackBtn = true
         super.viewDidLoad()
         self.title = "互关"
         self.table.height -= (49 + kXbottom())

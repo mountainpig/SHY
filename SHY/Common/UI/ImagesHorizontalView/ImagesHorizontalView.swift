@@ -32,12 +32,19 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     init(frame: CGRect,array : Array<ImageModel>,index : Int,imageViewArray :Array<UIImageView>) {
         super.init(frame: frame)
-//        for item in array {
-//            listArray.append(item)
-//        }
         self.listArray = array
         self.viewArray = imageViewArray
+        self.addCollectionView()
+        self.collectView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
+        self.collectView.isHidden = true
         self.imageAnimation(array: array, index: index, imageViewArray: imageViewArray,appear: true)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    func addCollectionView(){
         let layout: UICollectionViewFlowLayout! = UICollectionViewFlowLayout.init()
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -50,8 +57,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.collectView.isPagingEnabled = true
         self.addSubview(self.collectView!)
         self.collectView.reloadData()
-        self.collectView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
-        self.collectView.isHidden = true
+        
     }
     
     // MARK: - appear animation
@@ -106,7 +112,6 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     }
     
     // MARK: - collectView delegate
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.listArray!.count
     }
@@ -116,8 +121,12 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         cell.addCustomView()
         cell.zoomView.delegate = self
         cell.zoomView.scrollView.setZoomScale(1.0, animated: false)
-        cell.loadWithModel(model: listArray[indexPath.row], index: indexPath.row)
+        self.cellLoadImage(cell: cell, indexPath: indexPath)
         return cell
+    }
+    
+    func cellLoadImage(cell:ImagesHorizontalViewCell,indexPath: IndexPath) {
+        cell.loadWithModel(model: listArray[indexPath.row], index: indexPath.row)
     }
     
     func tapClick(index: Int) {
