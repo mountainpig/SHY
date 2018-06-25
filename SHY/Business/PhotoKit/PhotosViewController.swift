@@ -9,12 +9,25 @@
 import UIKit
 import Photos
 
+extension BaseViewController {
+    func addCancelBtn(){
+        let cancelBtn = UIButton.init(frame: CGRect(x: self.customNavigationView.width - 51, y: 0, width: 51, height: 44))
+        self.customNavigationView.addSubview(cancelBtn)
+        cancelBtn.setTitle("取消", for: UIControlState.normal)
+        cancelBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
+        cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        cancelBtn.addTarget(self, action: #selector(cancelClick), for: UIControlEvents.touchUpInside)
+    }
+    
+    @objc func cancelClick(){
+        self.navigationController?.dismiss(animated: true, completion: {})
+    }
+}
+
 class PhotosViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
 
     let cellWidth = (kScreenWidth - 6)/3
     var collectView : UICollectionView! = nil;
-    var listArray : Array = [Any]()
-    
     var assetsFetchResults:PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
@@ -52,17 +65,7 @@ class PhotosViewController: BaseViewController,UICollectionViewDelegate,UICollec
                 }
             })
         }
-
-        let cancelBtn = UIButton.init(frame: CGRect(x: self.customNavigationView.width - 51, y: 0, width: 51, height: 44))
-        self.customNavigationView.addSubview(cancelBtn)
-        cancelBtn.setTitle("取消", for: UIControlState.normal)
-        cancelBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
-        cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        cancelBtn.addTarget(self, action: #selector(cancelClick), for: UIControlEvents.touchUpInside)
-    }
-    
-    @objc func cancelClick(){
-        self.navigationController?.dismiss(animated: true, completion: {})
+        self.addCancelBtn()
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,29 +76,21 @@ class PhotosViewController: BaseViewController,UICollectionViewDelegate,UICollec
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.assetsFetchResults?.count ?? 0
-//        return self.listArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath)
-        
-        var imageView = (cell.contentView.viewWithTag(1) as? UIImageView)
-        if imageView == nil {
-            imageView = UIImageView.init(frame: cell.bounds)
-            imageView!.tag = 1
-            cell.contentView.addSubview(imageView!)
-        }
-        
-        
+        let imageView = cell.contentView.viewForTag(tag: 1) { () -> UIView in
+            return UIImageView.init(frame: cell.bounds)
+        } as! UIImageView
+
         if let asset = self.assetsFetchResults?[indexPath.row] {
-            
             PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: cellWidth * UIScreen.main.scale, height: cellWidth * UIScreen.main.scale),
                                            contentMode: PHImageContentMode.aspectFill,
                                            options: nil) { (image, nfo) in
-                                            (cell.contentView.viewWithTag(1) as! UIImageView).image = image
+                                            imageView.image = image
             }
         }
-
 
         return cell
     }

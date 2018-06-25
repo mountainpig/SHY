@@ -13,9 +13,9 @@ class AlbumItem {
     //相簿名称
     var title:String?
     //相簿内的资源
-    var fetchResult : PHFetchResult<AnyObject>?
+    var fetchResult : PHFetchResult<PHAsset>?
     
-    init(title:String?,fetchResult : PHFetchResult<AnyObject>){
+    init(title:String?,fetchResult : PHFetchResult<PHAsset>){
         self.title = title
         self.fetchResult = fetchResult
     }
@@ -29,12 +29,7 @@ class PhotoAlbumViewController: BaseTableViewController {
         self.hiddenBackBtn = true
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let cancelBtn = UIButton.init(frame: CGRect(x: self.customNavigationView.width - 51, y: 0, width: 51, height: 44))
-        self.customNavigationView.addSubview(cancelBtn)
-        cancelBtn.setTitle("取消", for: UIControlState.normal)
-        cancelBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
-        cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        cancelBtn.addTarget(self, action: #selector(cancelClick), for: UIControlEvents.touchUpInside)
+        self.addCancelBtn()
         
         let smartOptions = PHFetchOptions()
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
@@ -56,15 +51,12 @@ class PhotoAlbumViewController: BaseTableViewController {
             let assetsFetchResult = PHAsset.fetchAssets(in: c,options: resultsOptions)
             //没有图片的空相簿不显示
             if assetsFetchResult.count > 0{
-                self.dataSuorceArray.append(AlbumItem(title: c.localizedTitle, fetchResult: assetsFetchResult as! PHFetchResult<AnyObject>))
+                self.dataSuorceArray.append(AlbumItem(title: c.localizedTitle, fetchResult: assetsFetchResult))
             }
         }
     }
         
-    
-    @objc func cancelClick(){
-        self.navigationController?.dismiss(animated: true, completion: {})
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,12 +68,16 @@ class PhotoAlbumViewController: BaseTableViewController {
         var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil {
             cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+            cell?.imageView?.frame = CGRect.width(44)
         }
         let item = self.dataSuorceArray[indexPath.row] as! AlbumItem
-        PHCachingImageManager.default().requestImage(for: item.fetchResult?.lastObject as! PHAsset, targetSize: CGSize(width: 44 * UIScreen.main.scale, height: 44 * UIScreen.main.scale),
+        PHCachingImageManager.default().requestImage(for: (item.fetchResult?.lastObject)!, targetSize: CGSize(width: 44 * UIScreen.main.scale, height: 44 * UIScreen.main.scale),
                                        contentMode: PHImageContentMode.aspectFill,
                                        options: nil) { (image, nfo) in
-                                        cell?.imageView?.image = image
+                                        DispatchQueue.main.async{
+                                            cell?.imageView?.image = image
+                                        }
+                                        
         }
         cell?.textLabel?.text = item.title! + "  " + "(" + "\(item.fetchResult!.count)" + ")"
         return cell!
@@ -90,13 +86,8 @@ class PhotoAlbumViewController: BaseTableViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.dataSuorceArray[indexPath.row] as! AlbumItem
-        if item.fetchResult?.firstObject is PHAsset{
-            let vc = PhotosViewController()
-            vc.assetsFetchResults = item.fetchResult as? PHFetchResult<PHAsset>
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else{
-            return
-        }
-
+        let vc = PhotosViewController()
+        vc.assetsFetchResults = item.fetchResult
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

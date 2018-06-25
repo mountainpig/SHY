@@ -36,7 +36,6 @@ class PYSort: NSObject {
             model.index = collation.section(for: model, collationStringSelector: #selector(getter: model.name))
             model.sign = collation.sectionTitles[model.index]
             listArray[model.index].append(model);
-            print("")
         }
         
         for (index,subArr) in listArray.enumerated() {

@@ -21,7 +21,6 @@ extension UIButton {
             imageWith += view!.width
         }
         self.titleEdgeInsets = UIEdgeInsetsMake(rect.origin.y, rect.origin.x - imageWith, self.height - rect.origin.y - rect.size.height,self.width - rect.origin.x - rect.size.width)
-        print(self.titleEdgeInsets)
     }
     
 }
