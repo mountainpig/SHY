@@ -47,4 +47,17 @@ class PinYinManager: NSObject {
  */
         return result
     }
+    
+    class func systemPinYinFor(_ str : String)->String{
+       let mutableString = NSMutableString(string: str)
+        CFStringTransform(mutableString, nil, kCFStringTransformToLatin, false)
+        CFStringTransform(mutableString, nil, kCFStringTransformStripDiacritics, false)
+        let string = String(mutableString)
+        return string.replacingOccurrences(of: " ", with: "")
+    }
+    
+    
+
+    
+    
 }

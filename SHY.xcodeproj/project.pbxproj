@@ -28,6 +28,7 @@
 		1D3580A620DCE34C00D93817 /* UIView+tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3580A520DCE34C00D93817 /* UIView+tag.swift */; };
 		1D3580AF20E09E6900D93817 /* pinyin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D3580AE20E09E6900D93817 /* pinyin.plist */; };
 		1D3580B220E0B42C00D93817 /* PinYinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3580B120E0B42C00D93817 /* PinYinManager.swift */; };
+		1D3580B920E2306700D93817 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3580B820E2306700D93817 /* DebugView.swift */; };
 		1D3EEC9620BBD97000FA3CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3EEC9520BBD97000FA3CC7 /* AppDelegate.swift */; };
 		1D3EEC9B20BBD97000FA3CC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3EEC9920BBD97000FA3CC7 /* Main.storyboard */; };
 		1D3EEC9D20BBD97300FA3CC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D3EEC9C20BBD97300FA3CC7 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		1D3580A520DCE34C00D93817 /* UIView+tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+tag.swift"; sourceTree = "<group>"; };
 		1D3580AE20E09E6900D93817 /* pinyin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pinyin.plist; sourceTree = "<group>"; };
 		1D3580B120E0B42C00D93817 /* PinYinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinYinManager.swift; sourceTree = "<group>"; };
+		1D3580B820E2306700D93817 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		1D3EEC9220BBD97000FA3CC7 /* SHY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3EEC9520BBD97000FA3CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D3EEC9A20BBD97000FA3CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		1D35807320D8DDA000D93817 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1D3580B720E2305200D93817 /* DebugView */,
 				1D35807420D8DDA000D93817 /* ImagesHorizontalView */,
 				1D35807720D8DDA000D93817 /* PullLoadingView */,
 			);
@@ -302,6 +305,14 @@
 				1D3580B120E0B42C00D93817 /* PinYinManager.swift */,
 			);
 			path = PinYin;
+			sourceTree = "<group>";
+		};
+		1D3580B720E2305200D93817 /* DebugView */ = {
+			isa = PBXGroup;
+			children = (
+				1D3580B820E2306700D93817 /* DebugView.swift */,
+			);
+			path = DebugView;
 			sourceTree = "<group>";
 		};
 		1D3EEC8920BBD97000FA3CC7 = {
@@ -855,6 +866,7 @@
 				1D35807B20D8DDA100D93817 /* ImageZoomScrollView.swift in Sources */,
 				1DE11F6A20C9252D00DEC574 /* TabBarViewController.swift in Sources */,
 				1DE11F5220C91BDD00DEC574 /* BasePullLoadingViewController.swift in Sources */,
+				1D3580B920E2306700D93817 /* DebugView.swift in Sources */,
 				1DE11F6020C9218600DEC574 /* ImageModel.swift in Sources */,
 				1D35807F20D8DF5D00D93817 /* UpLoadView.swift in Sources */,
 				1D35808720DB4B8700D93817 /* UIImage+Expend.swift in Sources */,

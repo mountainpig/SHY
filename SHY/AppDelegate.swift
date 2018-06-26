@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window?.rootViewController = TabBarViewController.init()
         window?.makeKeyAndVisible()
+        window?.addSubview(DebugView.init(frame: CGRect.width(50)))
         return true
     }
 
