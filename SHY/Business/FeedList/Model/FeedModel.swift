@@ -26,6 +26,7 @@ class FeedCellLayout: BaseObject {
 
 class FeedModel: BaseObject {
     var avatar = ""
+    var userId = ""
     var name = ""
     var time = ""
     var feedType = 0

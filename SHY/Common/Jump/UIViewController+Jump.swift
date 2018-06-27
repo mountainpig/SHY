@@ -14,4 +14,8 @@ extension UIViewController {
         nav.viewControllers = [PhotoAlbumViewController(),PhotosViewController()]
         self.navigationController?.present(nav, animated: true, completion: {})
     }
+    
+    func jumpProfileWithUserId(_ userId : String) {
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
 }

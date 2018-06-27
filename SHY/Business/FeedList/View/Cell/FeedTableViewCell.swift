@@ -11,11 +11,13 @@ import YYText
 
 class FeedTableViewCell: UITableViewCell {
 
-    var headImageView:UIImageView?
+    var headBtn:UIButton?
     var nameLabel:UILabel?
     var timeLabel:UILabel?
     var contentLabel:YYLabel?
     var imagesView:FeedImagesView?
+    var feedModel:FeedModel?
+    var enventCenter : FeedEventCenter! = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,16 +40,20 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     func addCustomView() {
-        self.headImageView = UIImageView()
-        self.contentView.addSubview(self.headImageView!);
+
         self.nameLabel = UILabel()
         self.contentView.addSubview(self.nameLabel!)
         self.timeLabel = UILabel()
         self.contentView.addSubview(self.timeLabel!)
-        self.headImageView?.layer.cornerRadius = 20;
-        self.headImageView?.clipsToBounds = true;
-        self.headImageView?.frame = CGRect(x: 14, y: 14, width: 40, height: 40)
-        self.nameLabel?.frame = CGRect(x: (self.headImageView?.right)! + 14, y: (self.headImageView?.top)!, width: 100, height: 20)
+        
+        self.headBtn = UIButton()
+        self.contentView.addSubview(self.headBtn!);
+        self.headBtn?.layer.cornerRadius = 20;
+        self.headBtn?.clipsToBounds = true;
+        self.headBtn?.frame = CGRect(x: 14, y: 14, width: 40, height: 40)
+        self.headBtn?.addTarget(self, action: #selector(headClick), for: UIControlEvents.touchUpInside)
+        
+        self.nameLabel?.frame = CGRect(x: (self.headBtn?.right)! + 14, y: (self.headBtn?.top)!, width: 100, height: 20)
         self.timeLabel?.frame = (self.nameLabel?.frame)!;
         self.timeLabel?.top = (self.nameLabel?.bottom)!;
         
@@ -60,10 +66,17 @@ class FeedTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.contentLabel!);
     }
     
+    @objc func headClick() {
+        self.enventCenter.clickAvatarWithUserId(self.feedModel!.userId)
+    }
+    
+    
     func loadWithModel(feedModel:FeedModel,eventCenter:FeedEventCenter) {
+        self.feedModel = feedModel
+        self.enventCenter = eventCenter
         self.nameLabel?.text = feedModel.name
         let imgUrl : URL = URL.init(string:  feedModel.avatar)!
-        self.headImageView?.sd_setImage(with: imgUrl, completed: nil)
+        self.headBtn?.sd_setImage(with: imgUrl, for: UIControlState.normal, completed: nil)
         self.timeLabel?.text = feedModel.time;
         
         if feedModel.layout.textLayout != nil {

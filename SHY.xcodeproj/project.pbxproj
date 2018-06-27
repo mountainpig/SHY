@@ -72,6 +72,11 @@
 		1DE1201220CA331500DEC574 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE1201120CA331500DEC574 /* BaseTableViewController.swift */; };
 		1DE1201420CA55AD00DEC574 /* timeline_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DE1201320CA55AD00DEC574 /* timeline_json.txt */; };
 		1DE1201720CA58EC00DEC574 /* String+json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE1201620CA58EC00DEC574 /* String+json.swift */; };
+		1DF7CB0820E38087006D664E /* ProfileHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0720E38087006D664E /* ProfileHeadView.swift */; };
+		1DF7CB0B20E38090006D664E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0A20E38090006D664E /* ProfileViewController.swift */; };
+		1DF7CB0E20E3839D006D664E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0D20E3839D006D664E /* UserModel.swift */; };
+		1DF7CB1020E3853A006D664E /* profileUserInfo_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */; };
+		1DF7CB1320E385A3006D664E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */; };
 		8FAECA71AA556B5CF19309D4 /* Pods_SHY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8258892EDA2DF961B95C91F /* Pods_SHY.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +171,11 @@
 		1DE1201120CA331500DEC574 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1DE1201320CA55AD00DEC574 /* timeline_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timeline_json.txt; sourceTree = "<group>"; };
 		1DE1201620CA58EC00DEC574 /* String+json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+json.swift"; sourceTree = "<group>"; };
+		1DF7CB0720E38087006D664E /* ProfileHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeadView.swift; sourceTree = "<group>"; };
+		1DF7CB0A20E38090006D664E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1DF7CB0D20E3839D006D664E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profileUserInfo_json.txt; sourceTree = "<group>"; };
+		1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B803F3C92A2E321E73C29992 /* Pods-SHY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.release.xcconfig"; sourceTree = "<group>"; };
 		B8BD5EF3BE9E823E89591795 /* Pods-SHY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.debug.xcconfig"; sourceTree = "<group>"; };
 		C8258892EDA2DF961B95C91F /* Pods_SHY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,6 +421,7 @@
 				1DE11F6820C924F200DEC574 /* Tab */,
 				1DE11F5320C9218600DEC574 /* FeedList */,
 				1D3EECE520BD594600FA3CC7 /* Timeline */,
+				1DF7CB0320E37CE6006D664E /* Profile */,
 				1DCE9DEC20BE8C2F00AEA81C /* AddressBook */,
 				1DE11F6B20C925B800DEC574 /* ME */,
 			);
@@ -452,6 +463,7 @@
 		1DDE63FF20D27A5F006C27C4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1DF7CB0C20E38389006D664E /* Model */,
 				1D3580B020E0B40800D93817 /* PinYin */,
 				1D35809120DBA2DF00D93817 /* Jump */,
 				1D35807320D8DDA000D93817 /* UI */,
@@ -538,6 +550,7 @@
 			children = (
 				1D3580AE20E09E6900D93817 /* pinyin.plist */,
 				1DE1201320CA55AD00DEC574 /* timeline_json.txt */,
+				1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */,
 				1DE11FAD20C92EFE00DEC574 /* image */,
 			);
 			path = Resource;
@@ -604,6 +617,48 @@
 				1DE1201620CA58EC00DEC574 /* String+json.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		1DF7CB0320E37CE6006D664E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB1120E38581006D664E /* ViewModel */,
+				1DF7CB0920E38090006D664E /* ViewController */,
+				1DF7CB0620E38074006D664E /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1DF7CB0620E38074006D664E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB0720E38087006D664E /* ProfileHeadView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DF7CB0920E38090006D664E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB0A20E38090006D664E /* ProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1DF7CB0C20E38389006D664E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB0D20E3839D006D664E /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1DF7CB1120E38581006D664E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		204A060C3FD228331DFE2AAB /* Pods */ = {
@@ -732,6 +787,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DE1201420CA55AD00DEC574 /* timeline_json.txt in Resources */,
+				1DF7CB1020E3853A006D664E /* profileUserInfo_json.txt in Resources */,
 				1D3580AF20E09E6900D93817 /* pinyin.plist in Resources */,
 				1D35809720DBA49000D93817 /* hy_timeline_camera@2x.png in Resources */,
 				1DE11FD320C92EFE00DEC574 /* hy_homePage@3x.png in Resources */,
@@ -841,6 +897,7 @@
 				1D3EEC9620BBD97000FA3CC7 /* AppDelegate.swift in Sources */,
 				1DE11F6220C9218600DEC574 /* FeedTableViewCell.swift in Sources */,
 				1DE11FAB20C9284100DEC574 /* BaseViewController.swift in Sources */,
+				1DF7CB0E20E3839D006D664E /* UserModel.swift in Sources */,
 				1DE11F6720C921A100DEC574 /* TimelineViewController.swift in Sources */,
 				1D35809A20DC993900D93817 /* PhotoAlbumViewController.swift in Sources */,
 				1D35807D20D8DDA100D93817 /* PullLoadingView.swift in Sources */,
@@ -865,11 +922,14 @@
 				1D35809320DBA30C00D93817 /* UIViewController+Jump.swift in Sources */,
 				1D35808220D9145A00D93817 /* Array+Expend.swift in Sources */,
 				1DE1200820C93DC600DEC574 /* UIButton+Edge.swift in Sources */,
+				1DF7CB0820E38087006D664E /* ProfileHeadView.swift in Sources */,
 				1D35807B20D8DDA100D93817 /* ImageZoomScrollView.swift in Sources */,
 				1DE11F6A20C9252D00DEC574 /* TabBarViewController.swift in Sources */,
 				1DE11F5220C91BDD00DEC574 /* BasePullLoadingViewController.swift in Sources */,
+				1DF7CB1320E385A3006D664E /* ProfileViewModel.swift in Sources */,
 				1D3580B920E2306700D93817 /* DebugView.swift in Sources */,
 				1DE11F6020C9218600DEC574 /* ImageModel.swift in Sources */,
+				1DF7CB0B20E38090006D664E /* ProfileViewController.swift in Sources */,
 				1D35807F20D8DF5D00D93817 /* UpLoadView.swift in Sources */,
 				1D35808720DB4B8700D93817 /* UIImage+Expend.swift in Sources */,
 			);
@@ -1048,7 +1108,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHY/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHY;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SHY/Util/Bridge/SHY-Bridging-Header.h";
@@ -1066,7 +1129,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHY/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHY;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SHY/Util/Bridge/SHY-Bridging-Header.h";
@@ -1082,7 +1148,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHYTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHYTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1098,7 +1168,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHYTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHYTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1113,7 +1187,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHYUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHYUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1128,7 +1206,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SHYUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SHYUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
