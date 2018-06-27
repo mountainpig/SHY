@@ -18,6 +18,7 @@ class BasePullLoadingViewController: BaseTableViewController {
 //    let header = MJRefreshNormalHeader()
     let header = CSRefreshStateHeader()
     let footer = MJRefreshAutoNormalFooter()
+    var hiddenPullDownRefresh = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +28,13 @@ class BasePullLoadingViewController: BaseTableViewController {
         self.upLoadingView = UpLoadView.init(frame: CGRect(x: 0, y: table.height, width: kScreenWidth, height: 33), observedScrollView: table)
         table.addSubview(self.upLoadingView)
  */
-        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        header.stateLabel.isHidden = true
-        header.lastUpdatedTimeLabel.isHidden = true
-        self.table.mj_header = header
-        
+        if !self.hiddenPullDownRefresh {
+            header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+            header.stateLabel.isHidden = true
+            header.lastUpdatedTimeLabel.isHidden = true
+            self.table.mj_header = header
+        }
+
         footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         footer.setTitle("", for: MJRefreshState.idle)
         self.table.mj_footer = footer
@@ -67,7 +70,9 @@ class BasePullLoadingViewController: BaseTableViewController {
     func finishPulldownloading(){
 //        self.loadingView.changeStatus(PullLoadingStatus.stop)
 //        self.isPullLoading = false
-        self.table.mj_header.endRefreshing()
+        if !self.hiddenPullDownRefresh {
+            self.table.mj_header.endRefreshing()
+        }
     }
     
     func finishPulluploading(){

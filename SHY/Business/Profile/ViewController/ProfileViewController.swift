@@ -10,10 +10,15 @@ import UIKit
 
 class ProfileViewController: FeedViewController {
 
+    var headView : ProfileHeadView! = nil
+    
     override func viewDidLoad() {
+        self.hiddenPullDownRefresh = true
         super.viewDidLoad()
+        self.customNavigationView.isHidden = true
+        self.table.frame = self.view.bounds
         ProfileViewModel.getUserData { (userModel) in
-            let headView = ProfileHeadView.init(frame: CGRect.zero)
+            headView = ProfileHeadView.init(frame: CGRect.zero)
             headView.loadWithUser(userModel)
             self.table.tableHeaderView = headView
         }
@@ -25,6 +30,16 @@ class ProfileViewController: FeedViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            if scrollView.contentOffset.y < -kScreenWidth/6 {
+                scrollView.contentOffset.y = -kScreenWidth/6
+            }
+            if self.headView != nil {
+                self.headView.scrollHeight(-scrollView.contentOffset.y)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

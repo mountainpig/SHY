@@ -19,6 +19,8 @@ class ProfileHeadView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.clipsToBounds = false
+        
         self.corverImgeView.size = CGSize(width: kScreenWidth, height: kScreenWidth/3)
         self.corverImgeView.clipsToBounds = true
         self.corverImgeView.contentMode = UIViewContentMode.scaleAspectFill
@@ -58,6 +60,11 @@ class ProfileHeadView: UIView {
         self.attentionBtn.setTitle("关注 \(user.attentionCount)", for: UIControlState.normal)
         self.fansBtn.setTitle("关注 \(user.fansCount)", for: UIControlState.normal)
         self.descLabel.text = user.desc
+    }
+    
+    func scrollHeight(_ height: CGFloat) {
+        self.corverImgeView.top = -height
+        self.corverImgeView.height = kScreenWidth/3 + height
     }
     
     required init?(coder aDecoder: NSCoder) {
