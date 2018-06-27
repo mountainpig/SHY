@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.2)
+  - FDFullscreenPopGesture (1.1)
   - HandyJSON (4.1.1)
   - MJRefresh (3.1.15.3)
   - Realm (3.7.1):
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FDFullscreenPopGesture
   - HandyJSON
   - MJRefresh
   - RealmSwift
@@ -25,6 +27,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - FDFullscreenPopGesture
     - HandyJSON
     - MJRefresh
     - Realm
@@ -35,6 +38,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
@@ -43,6 +47,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: c9726b0776539a19721107a5d537bd562fab0686
+PODFILE CHECKSUM: 102cb6c0abecca669a836d7689c95171e140ff68
 
 COCOAPODS: 1.5.0

@@ -9,6 +9,7 @@ pod 'HandyJSON'
 pod 'RealmSwift'
 pod 'YYCache'
 pod 'MJRefresh'
+pod 'FDFullscreenPopGesture'
 
 end
 
