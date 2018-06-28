@@ -26,7 +26,6 @@ class PhotoHorizontalView: ImagesHorizontalView {
     init(frame: CGRect,fetchResults:PHFetchResult<PHAsset>,index : Int) {
         super.init(frame : frame)
         self.assetsFetchResults = fetchResults
-        self.addCollectionView()
         self.collectView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
     }
     

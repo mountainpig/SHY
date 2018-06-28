@@ -16,4 +16,5 @@ class UserModel: BaseObject {
     var profileBgs = ""
     var fansCount = 0
     var attentionCount = 0
+    var hd_avatar = ""
 }

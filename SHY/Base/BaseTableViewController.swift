@@ -32,7 +32,7 @@ class BaseTableViewController: BaseViewController,UITableViewDataSource,UITableV
         table.estimatedRowHeight = 0;
         table.estimatedSectionHeaderHeight = 0;
         table.estimatedSectionFooterHeight = 0;
-        self.view.addSubview(table)
+        self.view.insertSubview(table, belowSubview: self.customNavigationView)
         table.tableFooterView = UIView()
     }
     

@@ -8,18 +8,26 @@
 
 import UIKit
 
-class ProfileViewController: FeedViewController {
+class ProfileViewController: FeedViewController,ProfileHeadViewProtocol {
 
+    let maxScrollHeight = kScreenWidth/6;
     var headView : ProfileHeadView! = nil
+    var alphaNavigationView = ProfileAlphaNavigationView.init(frame: CGRect(x: 0, y: 20 + kXtop(), width: kScreenWidth, height: 44))
+    var userModel : UserModel! = nil
     
     override func viewDidLoad() {
         self.hiddenPullDownRefresh = true
         super.viewDidLoad()
         self.customNavigationView.isHidden = true
+        self.view.insertSubview(alphaNavigationView, belowSubview: self.customNavigationView)
+        self.alphaNavigationView.viewController = self
+        
         self.table.frame = self.view.bounds
-        ProfileViewModel.getUserData { (userModel) in
+        ProfileViewModel.getUserData { (user) in
+            self.userModel = user
             headView = ProfileHeadView.init(frame: CGRect.zero)
-            headView.loadWithUser(userModel)
+            headView.delegate = self
+            headView.loadWithUser(user)
             self.table.tableHeaderView = headView
         }
         // Do any additional setup after loading the view.
@@ -32,12 +40,41 @@ class ProfileViewController: FeedViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 {
-            if scrollView.contentOffset.y < -kScreenWidth/6 {
-                scrollView.contentOffset.y = -kScreenWidth/6
+            if scrollView.contentOffset.y < -maxScrollHeight {
+                scrollView.contentOffset.y = -maxScrollHeight
             }
             if self.headView != nil {
                 self.headView.scrollHeight(-scrollView.contentOffset.y)
             }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if (scrollView.contentOffset.y <= -maxScrollHeight) {
+            self.netRequestIsPullDown(true)
+            self.alphaNavigationView.animationView.beginAnimation()
+        }
+    }
+    
+    override func finishPulldownloading() {
+        super.finishPulldownloading()
+        self.alphaNavigationView.animationView.ednAnimation()
+    }
+        // MARK: - head delegate
+    func headViewEvent(event: ProfileHeadViewEvent, sender: Any) {
+        switch event {
+        case .headClick:
+            let model = ImageModel()
+            model.smallUrlString = self.userModel.avatar
+            model.bigUrlString = self.userModel.hd_avatar
+            let imageView = sender as! UIImageView
+            let view = ImagesHorizontalView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth + 20, height: kScreenHeight))
+            view.hiddenTapImge = true
+            self.view.addSubview(view)
+            view.animationApear(array: [model],index : 0,imageViewArray : [imageView])
+            break
+        default:
+            break
         }
     }
     /*

@@ -77,6 +77,9 @@
 		1DF7CB0E20E3839D006D664E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0D20E3839D006D664E /* UserModel.swift */; };
 		1DF7CB1020E3853A006D664E /* profileUserInfo_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */; };
 		1DF7CB1320E385A3006D664E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */; };
+		1DF7CB1520E3A3B0006D664E /* ProfileAnimationRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB1420E3A3B0006D664E /* ProfileAnimationRefreshView.swift */; };
+		1DF7CB7620E497BC006D664E /* ProfileAlphaNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB7520E497BC006D664E /* ProfileAlphaNavigationView.swift */; };
+		1DF7CB7920E4C429006D664E /* UIImage+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */; };
 		8FAECA71AA556B5CF19309D4 /* Pods_SHY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8258892EDA2DF961B95C91F /* Pods_SHY.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +179,9 @@
 		1DF7CB0D20E3839D006D664E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profileUserInfo_json.txt; sourceTree = "<group>"; };
 		1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1DF7CB1420E3A3B0006D664E /* ProfileAnimationRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAnimationRefreshView.swift; sourceTree = "<group>"; };
+		1DF7CB7520E497BC006D664E /* ProfileAlphaNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAlphaNavigationView.swift; sourceTree = "<group>"; };
+		1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Tap.swift"; sourceTree = "<group>"; };
 		B803F3C92A2E321E73C29992 /* Pods-SHY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.release.xcconfig"; sourceTree = "<group>"; };
 		B8BD5EF3BE9E823E89591795 /* Pods-SHY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.debug.xcconfig"; sourceTree = "<group>"; };
 		C8258892EDA2DF961B95C91F /* Pods_SHY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,6 +410,7 @@
 		1D3EECDF20BD591A00FA3CC7 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1DF7CB7720E4C429006D664E /* UIImageView */,
 				1D35808520DB4B8700D93817 /* UIImage */,
 				1D35808020D9140B00D93817 /* Array */,
 				1DE1201520CA588500DEC574 /* String */,
@@ -633,6 +640,8 @@
 			isa = PBXGroup;
 			children = (
 				1DF7CB0720E38087006D664E /* ProfileHeadView.swift */,
+				1DF7CB7520E497BC006D664E /* ProfileAlphaNavigationView.swift */,
+				1DF7CB1420E3A3B0006D664E /* ProfileAnimationRefreshView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -659,6 +668,14 @@
 				1DF7CB1220E385A3006D664E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1DF7CB7720E4C429006D664E /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */,
+			);
+			path = UIImageView;
 			sourceTree = "<group>";
 		};
 		204A060C3FD228331DFE2AAB /* Pods */ = {
@@ -892,6 +909,7 @@
 				1DBE96B820D3D40800F031AF /* FeedListViewModel.swift in Sources */,
 				1DE11FFB20C9380800DEC574 /* UIVIew+Positioning.swift in Sources */,
 				1DE11FF820C937D900DEC574 /* UIColor+SNS.swift in Sources */,
+				1DF7CB1520E3A3B0006D664E /* ProfileAnimationRefreshView.swift in Sources */,
 				1DCE9DEE20BE8C5E00AEA81C /* AddressBookViewController.swift in Sources */,
 				1DE11F6120C9218600DEC574 /* FeedImagesView.swift in Sources */,
 				1D3EEC9620BBD97000FA3CC7 /* AppDelegate.swift in Sources */,
@@ -899,6 +917,7 @@
 				1DE11FAB20C9284100DEC574 /* BaseViewController.swift in Sources */,
 				1DF7CB0E20E3839D006D664E /* UserModel.swift in Sources */,
 				1DE11F6720C921A100DEC574 /* TimelineViewController.swift in Sources */,
+				1DF7CB7920E4C429006D664E /* UIImage+Tap.swift in Sources */,
 				1D35809A20DC993900D93817 /* PhotoAlbumViewController.swift in Sources */,
 				1D35807D20D8DDA100D93817 /* PullLoadingView.swift in Sources */,
 				1D35807A20D8DDA100D93817 /* ImagesHorizontalView.swift in Sources */,
@@ -917,6 +936,7 @@
 				1D3580A620DCE34C00D93817 /* UIView+tag.swift in Sources */,
 				1DE11F5F20C9218600DEC574 /* FeedModel.swift in Sources */,
 				1DDE640120D39F02006C27C4 /* BaseObject.swift in Sources */,
+				1DF7CB7620E497BC006D664E /* ProfileAlphaNavigationView.swift in Sources */,
 				1D35807C20D8DDA100D93817 /* LoadingCircleLayer.swift in Sources */,
 				1DE1201220CA331500DEC574 /* BaseTableViewController.swift in Sources */,
 				1D35809320DBA30C00D93817 /* UIViewController+Jump.swift in Sources */,

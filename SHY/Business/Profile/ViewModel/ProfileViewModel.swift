@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileViewModel: NSObject {
 
-    
     class func getUserData(completiom:(_ userModel:UserModel) ->()) {
         let path : String! = Bundle.main.path(forResource: "profileUserInfo_json", ofType: "txt")
         let content = try! String.init(contentsOf: URL.init(fileURLWithPath: path), encoding: String.Encoding.utf8)
@@ -26,6 +25,7 @@ class ProfileViewModel: NSObject {
         model.fansCount = dataDic["followerCount"] as! Int
         model.attentionCount = dataDic["followCount"] as! Int
         model.profileBgs = dataDic["profileBgs"] as! String
+        model.hd_avatar = dataDic["avatar_hd"] as! String
         return model
     }
     

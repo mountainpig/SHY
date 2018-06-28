@@ -8,14 +8,24 @@
 
 import UIKit
 
+enum ProfileHeadViewEvent {
+    case headClick
+}
+
+protocol ProfileHeadViewProtocol : NSObjectProtocol{
+    func headViewEvent(event : ProfileHeadViewEvent,sender : Any)
+}
+
 class ProfileHeadView: UIView {
 
     let corverImgeView = UIImageView()
-    let headBtn = UIButton()
+    let headImgView = UIImageView()
     let nameLabel = UILabel()
     let attentionBtn = UIButton()
     let fansBtn = UIButton()
     let descLabel = UILabel()
+    var userModel : UserModel! = nil
+    weak var delegate : ProfileHeadViewProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,12 +36,13 @@ class ProfileHeadView: UIView {
         self.corverImgeView.contentMode = UIViewContentMode.scaleAspectFill
         self.addSubview(self.corverImgeView)
         
-        self.headBtn.frame = CGRect(x: 14, y: self.corverImgeView.bottom - 46, width: 92, height: 92)
-        self.addSubview(self.headBtn)
-        self.headBtn.layer.cornerRadius = self.headBtn.width/2
-        self.headBtn.clipsToBounds = true
+        self.headImgView.frame = CGRect(x: 14, y: self.corverImgeView.bottom - 46, width: 92, height: 92)
+        self.addSubview(self.headImgView)
+        self.headImgView.layer.cornerRadius = self.headImgView.width/2
+        self.headImgView.clipsToBounds = true
+        self.headImgView.addTap(target: self, action: #selector(headImgClick(_:)))
         
-        self.nameLabel.frame = CGRect(x: 14, y: self.headBtn.bottom, width: 160, height: 40)
+        self.nameLabel.frame = CGRect(x: 14, y: self.headImgView.bottom, width: 160, height: 40)
         self.nameLabel.textColor = UIColor.black
         self.nameLabel.font = UIFont.systemFont(ofSize: 18)
         self.addSubview(self.nameLabel)
@@ -54,8 +65,9 @@ class ProfileHeadView: UIView {
     }
     
     func loadWithUser(_ user:UserModel){
+        self.userModel = user
         self.corverImgeView.sd_setImage(with: URL.init(string: user.profileBgs), completed: nil)
-        self.headBtn.sd_setBackgroundImage(with: URL.init(string: user.avatar), for: UIControlState.normal, completed: nil)
+        self.headImgView.sd_setImage(with: URL.init(string: user.avatar), completed: nil)
         self.nameLabel.text = user.name
         self.attentionBtn.setTitle("关注 \(user.attentionCount)", for: UIControlState.normal)
         self.fansBtn.setTitle("关注 \(user.fansCount)", for: UIControlState.normal)
@@ -65,6 +77,11 @@ class ProfileHeadView: UIView {
     func scrollHeight(_ height: CGFloat) {
         self.corverImgeView.top = -height
         self.corverImgeView.height = kScreenWidth/3 + height
+    }
+    
+    @objc func headImgClick(_ sender:UITapGestureRecognizer)
+    {
+        self.delegate?.headViewEvent(event: ProfileHeadViewEvent.headClick, sender: sender.view as Any)
     }
     
     required init?(coder aDecoder: NSCoder) {

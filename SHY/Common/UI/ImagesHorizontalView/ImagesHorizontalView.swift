@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ImagesHorizontalViewCell: UICollectionViewCell {
     var zoomView : ImageZoomScrollView = ImageZoomScrollView.init(frame: kScreenRect)
@@ -15,7 +16,8 @@ class ImagesHorizontalViewCell: UICollectionViewCell {
     }
     
     func loadWithModel(model : ImageModel,index : Int){
-        self.zoomView.imageView.sd_setImage(with: URL.init(string: model.smallUrlString!), completed: nil)
+//        self.zoomView.imageView.sd_setImage(with: URL.init(string: model.bigUrlString!), completed: nil)
+        self.zoomView.imageView.sd_setImage(with: URL.init(string: model.bigUrlString!), placeholderImage: SDImageCache.shared().imageFromCache(forKey: model.smallUrlString), options: SDWebImageOptions.retryFailed, completed: nil)
         self.zoomView.index = index
     }
 }
@@ -25,16 +27,15 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     var collectView : UICollectionView! = nil;
     var listArray : Array! = [ImageModel]();
     var viewArray : Array! = [UIImageView]();
+    var hiddenTapImge = false
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    init(frame: CGRect,array : Array<ImageModel>,index : Int,imageViewArray :Array<UIImageView>) {
-        super.init(frame: frame)
+
+    func animationApear(array : Array<ImageModel>,index : Int,imageViewArray :Array<UIImageView>){
         self.listArray = array
         self.viewArray = imageViewArray
-        self.addCollectionView()
         self.collectView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
         self.collectView.isHidden = true
         self.imageAnimation(array: array, index: index, imageViewArray: imageViewArray,appear: true)
@@ -42,6 +43,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addCollectionView()
     }
     
     func addCollectionView(){
@@ -69,6 +71,9 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.addSubview(backgroundView)
         
         let tapImageView = imageViewArray[index];
+        if self.hiddenTapImge {
+            tapImageView.isHidden = true
+        }
         let smallFrame = self.convert(tapImageView.bounds, from: tapImageView)
         let animationImageView = UIImageView.init(frame: smallFrame)
         animationImageView.clipsToBounds = true
@@ -85,12 +90,22 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
             animationImageView.frame = animationFrame
             animationFrame = smallFrame
             self.collectView.isHidden = true
+        } else {
+            animationImageView.layer.cornerRadius = tapImageView.layer.cornerRadius
         }
         
         UIView.animate(withDuration: 0.25, animations: {
             backgroundView.alpha = appear ? 1 : 0
             animationImageView.frame = animationFrame
+            if appear {
+                animationImageView.layer.cornerRadius = 0
+            } else {
+                animationImageView.layer.cornerRadius = tapImageView.layer.cornerRadius
+            }
         }) { (finish) in
+            if self.hiddenTapImge {
+                tapImageView.isHidden = false
+            }
             if appear {
                 self.collectView.isHidden = false
                 backgroundView.isHidden = true

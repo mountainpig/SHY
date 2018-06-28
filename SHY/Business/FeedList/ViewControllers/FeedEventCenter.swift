@@ -11,7 +11,9 @@ import UIKit
 class FeedEventCenter: NSObject{
     weak var viewController : UIViewController! = nil
     func clickCellImages(array : Array<ImageModel>,index:Int,imageViewArray :Array<UIImageView>){
-        viewController.view.addSubview(ImagesHorizontalView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth + 20, height: kScreenHeight), array: array,index : index,imageViewArray : imageViewArray))
+        let view = ImagesHorizontalView.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth + 20, height: kScreenHeight))
+        viewController.view.addSubview(view)
+        view.animationApear(array: array,index : index,imageViewArray : imageViewArray)
     }
     
     func clickAvatarWithUserId(_ userId : String){
