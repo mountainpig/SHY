@@ -25,7 +25,6 @@ class FeedViewController: BasePullLoadingViewController {
         btn.addTarget(self, action: #selector(addressBookClick), for: UIControlEvents.touchUpInside)
         self.navigationController?.navigationBar.addSubview(btn)
 //        self.dataSuorceArray = CacheManager.sharedInstance().getCache(key: "timeline") as! [Any]
-        self.netRequestIsPullDown(true)
     }
     
     @objc func addressBookClick(){
@@ -59,7 +58,7 @@ class FeedViewController: BasePullLoadingViewController {
     // MARK: - NET
     override func netRequestIsPullDown(_ isPullDown: Bool) {
         //        let temp = UInt64(arc4random()%2)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             FeedListViewModel.getData(isPullDown: isPullDown, completiom: { (array) in
                 if isPullDown {
                     self.dataSuorceArray = array
@@ -71,7 +70,7 @@ class FeedViewController: BasePullLoadingViewController {
 //                CacheManager.sharedInstance().save(object: self.dataSuorceArray, key: "timeline")
                 self.table.reloadData()
             })
-        }
+//        }
     }
 
 }

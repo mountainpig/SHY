@@ -18,7 +18,7 @@ class SortModel: NSObject {
 }
 
 class PYSort: NSObject {
-    class func sortWithArray(_ array : Array<String>) -> Array<Array<SortModel>> {
+    class func sortWithUserArray(_ array : Array<UserModel>) -> Array<Array<SortModel>> {
         if array.count == 0 {
             return []
         }
@@ -30,11 +30,12 @@ class PYSort: NSObject {
             listArray.append(subArray)
         }
         
-        for str in array {
+        for user in array {
             let model = SortModel.init()
-            model.name = str
+            model.name = user.name
             model.index = collation.section(for: model, collationStringSelector: #selector(getter: model.name))
             model.sign = collation.sectionTitles[model.index]
+            model.model = user
             listArray[model.index].append(model);
         }
         

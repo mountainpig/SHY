@@ -38,6 +38,8 @@ class BasePullLoadingViewController: BaseTableViewController {
         footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         footer.setTitle("", for: MJRefreshState.idle)
         self.table.mj_footer = footer
+        
+        self.netRequestIsPullDown(true)
     }
     
     // MARK: - tableView delegate

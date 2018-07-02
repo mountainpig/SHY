@@ -10,6 +10,7 @@ import UIKit
 
 enum ProfileHeadViewEvent {
     case headClick
+    case fansClick
 }
 
 protocol ProfileHeadViewProtocol : NSObjectProtocol{
@@ -56,6 +57,7 @@ class ProfileHeadView: UIView {
         self.fansBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         self.fansBtn.setTitleColor(UIColor.grayTwo(), for: UIControlState.normal)
         self.addSubview(self.fansBtn)
+        self.fansBtn.addTarget(self, action: #selector(fansClick(_:)), for: UIControlEvents.touchUpInside)
         
         self.descLabel.frame = CGRect(x: 14, y: self.attentionBtn.bottom, width: kScreenWidth - 28, height: 20)
         self.descLabel.textColor = UIColor.grayTwo()
@@ -70,7 +72,7 @@ class ProfileHeadView: UIView {
         self.headImgView.sd_setImage(with: URL.init(string: user.avatar), completed: nil)
         self.nameLabel.text = user.name
         self.attentionBtn.setTitle("关注 \(user.attentionCount)", for: UIControlState.normal)
-        self.fansBtn.setTitle("关注 \(user.fansCount)", for: UIControlState.normal)
+        self.fansBtn.setTitle("粉丝 \(user.fansCount)", for: UIControlState.normal)
         self.descLabel.text = user.desc
     }
     
@@ -82,6 +84,11 @@ class ProfileHeadView: UIView {
     @objc func headImgClick(_ sender:UITapGestureRecognizer)
     {
         self.delegate?.headViewEvent(event: ProfileHeadViewEvent.headClick, sender: sender.view as Any)
+    }
+    
+    @objc func fansClick(_ sender:UIButton)
+    {
+        self.delegate?.headViewEvent(event: ProfileHeadViewEvent.fansClick, sender: sender)
     }
     
     required init?(coder aDecoder: NSCoder) {

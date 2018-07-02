@@ -18,4 +18,8 @@ extension UIViewController {
     func jumpProfileWithUserId(_ userId : String) {
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
+    
+    func jumpFansListWithUserId(_ userId : String) {
+        self.navigationController?.pushViewController(FansListViewController(), animated: true)
+    }
 }

@@ -10,4 +10,5 @@
 
 @interface UIImage (EX)
 + (UIImage *)cornerRadiusCorverWithWidth:(CGFloat)width color:(UIColor *)color;
+- (UIImage *)colorizeWithColor:(UIColor *)theColor;
 @end

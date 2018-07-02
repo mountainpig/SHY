@@ -27,4 +27,24 @@
     UIGraphicsEndImageContext();
     return destImg;
 }
+
+- (UIImage *)colorizeWithColor:(UIColor *)theColor {
+
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, self.size.width, self.size.height);
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    CGContextSaveGState(ctx);
+    CGContextClipToMask(ctx, area, self.CGImage);
+    [theColor set];
+    CGContextFillRect(ctx, area);
+    CGContextRestoreGState(ctx);
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    CGContextDrawImage(ctx, area, self.CGImage);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 @end

@@ -51,8 +51,8 @@ class ProfileViewController: FeedViewController,ProfileHeadViewProtocol {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if (scrollView.contentOffset.y <= -maxScrollHeight) {
-            self.netRequestIsPullDown(true)
             self.alphaNavigationView.animationView.beginAnimation()
+            self.netRequestIsPullDown(true)
         }
     }
     
@@ -73,7 +73,8 @@ class ProfileViewController: FeedViewController,ProfileHeadViewProtocol {
             self.view.addSubview(view)
             view.animationApear(array: [model],index : 0,imageViewArray : [imageView])
             break
-        default:
+        case .fansClick:
+                self.jumpFansListWithUserId(self.userModel.userId)
             break
         }
     }

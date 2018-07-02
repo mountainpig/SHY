@@ -19,6 +19,10 @@ extension CGRect {
     static func width(_ width : CGFloat) -> CGRect {
         return CGRect(x: 0, y: 0, width: width, height: width)
     }
+    
+    static func size(_ size : CGSize) -> CGRect {
+        return CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    }
 }
 
 extension UIImage {
@@ -38,6 +42,46 @@ extension UIImage {
         let resultImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return resultImage!
+    }
+    
+    func corverColor(_ color:UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        let context = UIGraphicsGetCurrentContext()
+        let rect = CGRect.size(self.size)
+        context?.scaleBy(x: 1, y: -1)
+        context?.translateBy(x: 0, y: -self.size.height)
+        context?.saveGState()
+        context?.clip(to: rect, mask: self.cgImage!)
+        color.set()
+        context?.fill(rect)
+        context?.restoreGState()
+        context?.setBlendMode(CGBlendMode.multiply)
+        context?.draw(self.cgImage!, in: rect)
+        let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resultImage!
+    }
+    
+    //ImageIO
+    func resizeIO(size:CGSize) -> UIImage? {
+
+        guard let data = UIImagePNGRepresentation(self) else { return nil }
+        
+        let maxPixelSize = max(size.width, size.height)
+        
+        //let imageSource = CGImageSourceCreateWithURL(url, nil)
+        guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
+        
+        //kCGImageSourceThumbnailMaxPixelSize为生成缩略图的大小。当设置为800，如果图片本身大于800*600，则生成后图片大小为800*600，如果源图片为700*500，则生成图片为800*500
+        let options: [NSString: Any] = [
+            kCGImageSourceThumbnailMaxPixelSize: maxPixelSize,
+            kCGImageSourceCreateThumbnailFromImageAlways: true
+        ]
+        
+        let resizedImage = CGImageSourceCreateImageAtIndex(imageSource, 0, options as CFDictionary).flatMap{
+            UIImage(cgImage: $0)
+        }
+        return resizedImage
     }
 
 }

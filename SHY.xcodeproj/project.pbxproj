@@ -39,7 +39,6 @@
 		1D3EECF320BD595A00FA3CC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3EECF220BD595A00FA3CC7 /* Define.swift */; };
 		1DBE96B820D3D40800F031AF /* FeedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE96B720D3D40800F031AF /* FeedListViewModel.swift */; };
 		1DCE9DEB20BE891900AEA81C /* PYSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCE9DEA20BE891900AEA81C /* PYSort.swift */; };
-		1DCE9DEE20BE8C5E00AEA81C /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCE9DED20BE8C5E00AEA81C /* AddressBookViewController.swift */; };
 		1DDE640120D39F02006C27C4 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE640020D39F02006C27C4 /* BaseObject.swift */; };
 		1DDE640320D3A71D006C27C4 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE640220D3A71D006C27C4 /* CacheManager.swift */; };
 		1DE11F5220C91BDD00DEC574 /* BasePullLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE11F5120C91BDD00DEC574 /* BasePullLoadingViewController.swift */; };
@@ -80,6 +79,10 @@
 		1DF7CB1520E3A3B0006D664E /* ProfileAnimationRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB1420E3A3B0006D664E /* ProfileAnimationRefreshView.swift */; };
 		1DF7CB7620E497BC006D664E /* ProfileAlphaNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB7520E497BC006D664E /* ProfileAlphaNavigationView.swift */; };
 		1DF7CB7920E4C429006D664E /* UIImage+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */; };
+		1DF7CB7F20EA0250006D664E /* eachAttention_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7CB7E20EA024F006D664E /* eachAttention_json.txt */; };
+		1DF7CB8320EA028E006D664E /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB8120EA028D006D664E /* AddressBookViewController.swift */; };
+		1DF7CB8520EA02A9006D664E /* AddressBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB8420EA02A9006D664E /* AddressBookViewModel.swift */; };
+		1DF7CB8820EA0EC6006D664E /* FansListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7CB8720EA0EC6006D664E /* FansListViewController.swift */; };
 		8FAECA71AA556B5CF19309D4 /* Pods_SHY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8258892EDA2DF961B95C91F /* Pods_SHY.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,7 +144,6 @@
 		1D3EECF220BD595A00FA3CC7 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		1DBE96B720D3D40800F031AF /* FeedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListViewModel.swift; sourceTree = "<group>"; };
 		1DCE9DEA20BE891900AEA81C /* PYSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PYSort.swift; sourceTree = "<group>"; };
-		1DCE9DED20BE8C5E00AEA81C /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		1DDE640020D39F02006C27C4 /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		1DDE640220D3A71D006C27C4 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		1DE11F5120C91BDD00DEC574 /* BasePullLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePullLoadingViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,10 @@
 		1DF7CB1420E3A3B0006D664E /* ProfileAnimationRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAnimationRefreshView.swift; sourceTree = "<group>"; };
 		1DF7CB7520E497BC006D664E /* ProfileAlphaNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAlphaNavigationView.swift; sourceTree = "<group>"; };
 		1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Tap.swift"; sourceTree = "<group>"; };
+		1DF7CB7E20EA024F006D664E /* eachAttention_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eachAttention_json.txt; sourceTree = "<group>"; };
+		1DF7CB8120EA028D006D664E /* AddressBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
+		1DF7CB8420EA02A9006D664E /* AddressBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewModel.swift; sourceTree = "<group>"; };
+		1DF7CB8720EA0EC6006D664E /* FansListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FansListViewController.swift; sourceTree = "<group>"; };
 		B803F3C92A2E321E73C29992 /* Pods-SHY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.release.xcconfig"; sourceTree = "<group>"; };
 		B8BD5EF3BE9E823E89591795 /* Pods-SHY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHY/Pods-SHY.debug.xcconfig"; sourceTree = "<group>"; };
 		C8258892EDA2DF961B95C91F /* Pods_SHY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -462,7 +468,8 @@
 		1DCE9DEC20BE8C2F00AEA81C /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
-				1DCE9DED20BE8C5E00AEA81C /* AddressBookViewController.swift */,
+				1DF7CB8020EA028D006D664E /* ViewController */,
+				1DF7CB8220EA028D006D664E /* ViewModel */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -558,6 +565,7 @@
 				1D3580AE20E09E6900D93817 /* pinyin.plist */,
 				1DE1201320CA55AD00DEC574 /* timeline_json.txt */,
 				1DF7CB0F20E3853A006D664E /* profileUserInfo_json.txt */,
+				1DF7CB7E20EA024F006D664E /* eachAttention_json.txt */,
 				1DE11FAD20C92EFE00DEC574 /* image */,
 			);
 			path = Resource;
@@ -629,6 +637,7 @@
 		1DF7CB0320E37CE6006D664E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1DF7CB8620EA0E94006D664E /* FansList */,
 				1DF7CB1120E38581006D664E /* ViewModel */,
 				1DF7CB0920E38090006D664E /* ViewController */,
 				1DF7CB0620E38074006D664E /* View */,
@@ -676,6 +685,30 @@
 				1DF7CB7820E4C429006D664E /* UIImage+Tap.swift */,
 			);
 			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		1DF7CB8020EA028D006D664E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB8120EA028D006D664E /* AddressBookViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1DF7CB8220EA028D006D664E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB8420EA02A9006D664E /* AddressBookViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1DF7CB8620EA0E94006D664E /* FansList */ = {
+			isa = PBXGroup;
+			children = (
+				1DF7CB8720EA0EC6006D664E /* FansListViewController.swift */,
+			);
+			path = FansList;
 			sourceTree = "<group>";
 		};
 		204A060C3FD228331DFE2AAB /* Pods */ = {
@@ -814,6 +847,7 @@
 				1D35809820DBA49000D93817 /* hy_timeline_camera@3x.png in Resources */,
 				1D3EEC9D20BBD97300FA3CC7 /* Assets.xcassets in Resources */,
 				1DE11FD920C92EFE00DEC574 /* hy_my_select@3x.png in Resources */,
+				1DF7CB7F20EA0250006D664E /* eachAttention_json.txt in Resources */,
 				1D35809F20DC9A0D00D93817 /* hy_back@3x.png in Resources */,
 				1DE11FD520C92EFE00DEC574 /* hy_homePage_select@3x.png in Resources */,
 				1DE11FDB20C92EFE00DEC574 /* hy_search@3x.png in Resources */,
@@ -910,7 +944,6 @@
 				1DE11FFB20C9380800DEC574 /* UIVIew+Positioning.swift in Sources */,
 				1DE11FF820C937D900DEC574 /* UIColor+SNS.swift in Sources */,
 				1DF7CB1520E3A3B0006D664E /* ProfileAnimationRefreshView.swift in Sources */,
-				1DCE9DEE20BE8C5E00AEA81C /* AddressBookViewController.swift in Sources */,
 				1DE11F6120C9218600DEC574 /* FeedImagesView.swift in Sources */,
 				1D3EEC9620BBD97000FA3CC7 /* AppDelegate.swift in Sources */,
 				1DE11F6220C9218600DEC574 /* FeedTableViewCell.swift in Sources */,
@@ -925,6 +958,7 @@
 				1DE1201720CA58EC00DEC574 /* String+json.swift in Sources */,
 				1DCE9DEB20BE891900AEA81C /* PYSort.swift in Sources */,
 				1D35808420D9F86200D93817 /* CSRefreshStateHeader.swift in Sources */,
+				1DF7CB8520EA02A9006D664E /* AddressBookViewModel.swift in Sources */,
 				1DE11F6320C9218600DEC574 /* FeedEventCenter.swift in Sources */,
 				1DE11F6D20C925E700DEC574 /* MeViewController.swift in Sources */,
 				1DDE640320D3A71D006C27C4 /* CacheManager.swift in Sources */,
@@ -944,9 +978,11 @@
 				1DE1200820C93DC600DEC574 /* UIButton+Edge.swift in Sources */,
 				1DF7CB0820E38087006D664E /* ProfileHeadView.swift in Sources */,
 				1D35807B20D8DDA100D93817 /* ImageZoomScrollView.swift in Sources */,
+				1DF7CB8820EA0EC6006D664E /* FansListViewController.swift in Sources */,
 				1DE11F6A20C9252D00DEC574 /* TabBarViewController.swift in Sources */,
 				1DE11F5220C91BDD00DEC574 /* BasePullLoadingViewController.swift in Sources */,
 				1DF7CB1320E385A3006D664E /* ProfileViewModel.swift in Sources */,
+				1DF7CB8320EA028E006D664E /* AddressBookViewController.swift in Sources */,
 				1D3580B920E2306700D93817 /* DebugView.swift in Sources */,
 				1DE11F6020C9218600DEC574 /* ImageModel.swift in Sources */,
 				1DF7CB0B20E38090006D664E /* ProfileViewController.swift in Sources */,
