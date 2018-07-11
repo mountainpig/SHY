@@ -22,10 +22,20 @@ class TimelineViewController: FeedViewController {
         photoBtn.setImage(UIImage.init(named: "hy_timeline_camera"), for: UIControlState.normal)
         photoBtn.adjustImageRect(CGRect(x: 14, y: 10.5, width: 23, height: 23))
         photoBtn.addTarget(self, action: #selector(photoClick), for: UIControlEvents.touchUpInside)
+        
+        let secretBtn = UIButton.init(frame: CGRect(x: self.customNavigationView.width - 51, y: 0, width: 51, height: 44))
+        self.customNavigationView.addSubview(secretBtn)
+        secretBtn.setImage(UIImage.init(named: "hy_timeline_camera"), for: UIControlState.normal)
+        secretBtn.adjustImageRect(CGRect(x: 14, y: 10.5, width: 23, height: 23))
+        secretBtn.addTarget(self, action: #selector(secretClick), for: UIControlEvents.touchUpInside)
     }
     
     @objc func photoClick() {
         self.jumpPhotoViewController()
+    }
+    
+    @objc func secretClick() {
+        self.jumpSecretList()
     }
 
     override func didReceiveMemoryWarning() {

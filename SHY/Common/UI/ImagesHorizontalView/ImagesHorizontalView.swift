@@ -23,7 +23,6 @@ class ImagesHorizontalViewCell: UICollectionViewCell {
 }
 
 class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,ImageZoomScrollViewProtocol {
-
     var collectView : UICollectionView! = nil;
     var listArray : Array! = [ImageModel]();
     var viewArray : Array! = [UIImageView]();
@@ -38,7 +37,9 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.viewArray = imageViewArray
         self.collectView.scrollToItem(at: IndexPath.init(row: index, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
         self.collectView.isHidden = true
+        self.collectView.backgroundColor = UIColor.clear
         self.imageAnimation(array: array, index: index, imageViewArray: imageViewArray,appear: true)
+        self.backgroundColor = UIColor.black
     }
     
     override init(frame: CGRect) {
@@ -59,7 +60,6 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.collectView.isPagingEnabled = true
         self.addSubview(self.collectView!)
         self.collectView.reloadData()
-        
     }
     
     // MARK: - appear animation
@@ -144,8 +144,14 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         cell.loadWithModel(model: listArray[indexPath.row], index: indexPath.row)
     }
     
+    // MARK: - zoom View delegate
+    
     func tapClick(index: Int) {
         self.imageAnimation(array: self.listArray, index: index, imageViewArray: self.viewArray, appear: false)
+    }
+    
+    func changeAlaph(_ alaph: CGFloat) {
+        self.backgroundColor = UIColor.init(white: 0, alpha: alaph)
     }
 
 }

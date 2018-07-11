@@ -17,4 +17,8 @@ extension UIColor {
     class func grayThree() -> (UIColor) {
         return UIColor.colorWithHexString("#929292")
     }
+    
+    class func snsYellow() -> (UIColor) {
+        return UIColor.colorWithHexString("#fdd536")
+    }
 }

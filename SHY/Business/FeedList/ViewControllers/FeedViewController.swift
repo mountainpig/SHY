@@ -64,7 +64,7 @@ class FeedViewController: BasePullLoadingViewController {
                     self.dataSuorceArray = array
                     self.finishPulldownloading()
                 } else {
-                    self.dataSuorceArray.appendArray(array)
+                    self.dataSuorceArray.append(contentsOf: array)
                     self.finishPulluploading()
                 }
 //                CacheManager.sharedInstance().save(object: self.dataSuorceArray, key: "timeline")

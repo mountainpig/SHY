@@ -22,4 +22,8 @@ extension UIViewController {
     func jumpFansListWithUserId(_ userId : String) {
         self.navigationController?.pushViewController(FansListViewController(), animated: true)
     }
+    
+    func jumpSecretList() {
+        self.navigationController?.pushViewController(SecretListViewController(), animated: true)
+    }
 }

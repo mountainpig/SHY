@@ -28,7 +28,7 @@ class FansListViewController: BasePullLoadingViewController {
                 self.dataSuorceArray = array
                 self.finishPulldownloading()
             } else {
-                self.dataSuorceArray.appendArray(array)
+                self.dataSuorceArray.append(contentsOf: array)
                 self.finishPulluploading()
             }
             self.table.reloadData()

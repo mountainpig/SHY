@@ -10,10 +10,15 @@ import UIKit
 
 protocol ImageZoomScrollViewProtocol : NSObjectProtocol{
     func tapClick(index : Int)
+    func changeAlaph(_ alaph: CGFloat)
 }
 
-class ImageZoomScrollView: UIView,UIScrollViewDelegate {
+class ImageZoomScrollView: UIView,UIScrollViewDelegate,UIGestureRecognizerDelegate {
 
+    var startPoint : CGPoint?
+    var startCenter : CGPoint?
+    var firstTouchPoint : CGPoint?
+    var isMoving = false
     var scrollView : UIScrollView! = nil
     var imageView : UIImageView! = nil
     var index : Int! = 0
@@ -30,19 +35,22 @@ class ImageZoomScrollView: UIView,UIScrollViewDelegate {
         
         let tap : UITapGestureRecognizer! = UITapGestureRecognizer.init(target: self, action: #selector(tapClick(_:)))
         tap.numberOfTapsRequired = 1
-        scrollView.addGestureRecognizer(tap)
+        self.addGestureRecognizer(tap)
         let doubleTap : UITapGestureRecognizer! = UITapGestureRecognizer.init(target: self, action: #selector(doubleTapClick(_:)))
         doubleTap.numberOfTapsRequired = 2
-        scrollView.addGestureRecognizer(doubleTap)
+        self.addGestureRecognizer(doubleTap)
         tap.require(toFail: doubleTap)
         
+        let pan = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture(_:)))
+        pan.delegate = self
+        self.addGestureRecognizer(pan)
         self.addjustZoomScale()
     }
     
     @objc func tapClick(_ tap : UITapGestureRecognizer) {
         self.delegate?.tapClick(index: self.index)
     }
-    
+
     @objc func doubleTapClick(_ tap : UITapGestureRecognizer) {
         if self.scrollView.zoomScale <= 1.0 {
             let center : CGPoint! = tap.location(in: tap.view)
@@ -51,6 +59,59 @@ class ImageZoomScrollView: UIView,UIScrollViewDelegate {
             self.scrollView.setZoomScale(1.0, animated: true)
         }
     }
+    
+    @objc func panGesture(_ recognizer:UIPanGestureRecognizer) {
+        let location = recognizer.location(in: self)
+        switch recognizer.state {
+        case .began:
+            self.startPoint = location
+            self.startCenter = self.imageView.center
+            self.isMoving = true
+            break
+        case .changed:
+            if location.y < self.startPoint!.y && !self.isMoving {
+                return
+            }
+            var offset = fminf(Float((1 - location.y/self.height) * 2), 1)
+            let alpha = CGFloat(fmaxf(offset,0))
+            offset = fmaxf(offset,0.5)
+            self.imageView.transform = CGAffineTransform.init(translationX: location.x - self.startPoint!.x, y: location.y - self.startPoint!.y).scaledBy(x: CGFloat(offset),y: CGFloat(offset))
+            self.delegate?.changeAlaph(alpha)
+            break
+        case .ended,.cancelled:
+            self.isMoving = false
+            UIView.animate(withDuration: 0.25) {
+                self.imageView.transform = CGAffineTransform.init(translationX: 0, y: 0).scaledBy(x: 1,y: 1)
+                self.delegate?.changeAlaph(1)
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if gestureRecognizer.isKind(of: UIPanGestureRecognizer.classForCoder()) {
+            self.firstTouchPoint = touch.location(in: self)
+        }
+        return true
+    }
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        let touchPoint = gestureRecognizer.location(in: self)
+        let dirTop = self.firstTouchPoint!.y - touchPoint.y
+        if dirTop > -10 && dirTop < 10 {
+            return false
+        }
+        let dirLift = self.firstTouchPoint!.x - touchPoint.x
+        if dirLift > -10 && dirLift < 10 {
+//            return false
+        }
+        
+        return true
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
