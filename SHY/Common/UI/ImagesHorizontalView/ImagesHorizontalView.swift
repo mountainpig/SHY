@@ -27,6 +27,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     var listArray : Array! = [ImageModel]();
     var viewArray : Array! = [UIImageView]();
     var hiddenTapImge = false
+    let backgroundView = UIView.init(frame: kScreenRect)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -39,11 +40,12 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.collectView.isHidden = true
         self.collectView.backgroundColor = UIColor.clear
         self.imageAnimation(array: array, index: index, imageViewArray: imageViewArray,appear: true)
-        self.backgroundColor = UIColor.black
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundView.backgroundColor = UIColor.black
+        self.addSubview(backgroundView)
         self.addCollectionView()
     }
     
@@ -65,11 +67,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     // MARK: - appear animation
     
     func imageAnimation(array : Array<ImageModel>,index : Int,imageViewArray :Array<UIImageView>,appear:Bool){
-        let backgroundView = UIView.init(frame: self.bounds)
-        backgroundView.backgroundColor = UIColor.black
         backgroundView.alpha = appear ? 0 : 1
-        self.addSubview(backgroundView)
-        
         let tapImageView = imageViewArray[index];
         if self.hiddenTapImge {
             tapImageView.isHidden = true
@@ -95,7 +93,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
         }
         
         UIView.animate(withDuration: 0.25, animations: {
-            backgroundView.alpha = appear ? 1 : 0
+            self.backgroundView.alpha = appear ? 1 : 0
             animationImageView.frame = animationFrame
             if appear {
                 animationImageView.layer.cornerRadius = 0
@@ -108,7 +106,6 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
             }
             if appear {
                 self.collectView.isHidden = false
-                backgroundView.isHidden = true
                 animationImageView.isHidden = true
             } else {
                 self.removeFromSuperview()
@@ -151,7 +148,7 @@ class ImagesHorizontalView: UIView,UICollectionViewDelegate,UICollectionViewData
     }
     
     func changeAlaph(_ alaph: CGFloat) {
-        self.backgroundColor = UIColor.init(white: 0, alpha: alaph)
+        backgroundView.backgroundColor = UIColor.init(white: 0, alpha: alaph)
     }
 
 }
